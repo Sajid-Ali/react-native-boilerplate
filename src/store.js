@@ -1,39 +1,30 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { setupRNListener } from 'react-native-redux-listener';
-import createSagaMiddleware from 'redux-saga'
-
-import { combineReducers } from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
+import {setupRNListener} from 'react-native-redux-listener';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 import rootReducer from './reducers';
-// import sagas from './sagas'
-
-const getRootReducer = () => {
-  return combineReducers({
-    user: { name: "SAJID ALI", email: "test_1@example.com" },
-    profile: { img_urs: 'tes/asa/asa', status: "login" }
-  })
-};
-
-// create the saga middleware
-const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = compose(
-  //inject store enhancer
   setupRNListener({
-    monitorAppState: true,
+    monitorAppState: false,
     monitorNetInfo: true,
-    monitorKeyboard: true,
-    monitorDeepLinks: true,
-    monitorBackButton: true,
+    monitorKeyboard: false,
+    monitorDeepLinks: false,
+    monitorBackButton: false,
   }),
-  applyMiddleware(sagaMiddleware),
+  applyMiddleware(thunk),
 );
 
-// then run the saga
-// sagaMiddleware.run(sagas)
+// export default createStore(
+//   rootReducer(),
+//   composeWithDevTools(enhancer),
+// )
 
-export default createStore(
-  rootReducer(),
-  composeWithDevTools(enhancer),
-)
+
+export default function configureStore() {
+    return createStore(
+      rootReducer(),
+      composeWithDevTools(enhancer),
+    );
+}
