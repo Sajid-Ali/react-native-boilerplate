@@ -9,7 +9,7 @@
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "react": "16.6.3",
-    "react-native": "0.58.2",
+    "react-native": "^0.58.2",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-redux-listener": "^0.3.0",
     "react-navigation": "^2.18.2",

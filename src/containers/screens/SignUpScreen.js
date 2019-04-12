@@ -11,8 +11,11 @@ import * as selector from '../../selectors/loginSelectors';
 
 class SignUpScreen extends React.Component {
   state = {
+    first_name: "",
+    last_name: "",
     email: "",
-    password: ""
+    password: "",
+    confirm_password: "",
   };
 
   handleEmailChange = email => {
@@ -31,18 +34,18 @@ class SignUpScreen extends React.Component {
   };
 
   render () {
-    console.log(this.props);
+    console.log(this.props, '/////////////');
     return (
       <View style={styles.container}>
         {/*<Image source={imageLogo} style={styles.logo} />*/}
         <View style={styles.form}>
           <FormTextInput
-            value={this.state.email}
+            value={this.state.first_name}
             onChangeText={this.handleEmailChange}
             placeholder={strings.FIRST_NAME_PLACEHOLDER}
           />
           <FormTextInput
-            value={this.state.email}
+            value={this.state.last_name}
             onChangeText={this.handleEmailChange}
             placeholder={strings.LAST_NAME_PLACEHOLDER}
           />
@@ -55,11 +58,13 @@ class SignUpScreen extends React.Component {
             value={this.state.password}
             onChangeText={this.handlePasswordChange}
             placeholder={strings.PASSWORD_PLACEHOLDER}
+            secureTextEntry={true}
           />
           <FormTextInput
-            value={this.state.password}
+            value={this.state.confirm_password}
             onChangeText={this.handlePasswordChange}
             placeholder={strings.CONFIRM_PASSWORD_PLACEHOLDER}
+            secureTextEntry={true}
           />
           <Button label={strings.SIGNUP} onPress={this.handleLoginPress} />
         </View>
@@ -88,14 +93,18 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    // loginAction: data => dispatch(loginAction(data))
+    list: state.user.data
   }
 };
 
-export default connect(mapStateToProps)(SignUpScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    add: (name) => {
+      dispatch(console.log(name))
+    }
+  }
+};
+
+export default connect()(SignUpScreen)
