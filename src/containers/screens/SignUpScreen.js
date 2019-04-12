@@ -9,7 +9,7 @@ import colors from "../../config/colors";
 import { loginAction } from '../../actions/loginActions'
 import * as selector from '../../selectors/loginSelectors';
 
-class LoginScreen extends React.Component {
+class SignUpScreen extends React.Component {
   state = {
     email: "",
     password: ""
@@ -25,7 +25,6 @@ class LoginScreen extends React.Component {
 
   handleLoginPress = () => {
     const { email, password } = this.state;
-    this.props.navigation.navigate('SignUpScreen');
     if (email && password) {
       // this.props.loginAction({ email, password });
     }
@@ -40,6 +39,16 @@ class LoginScreen extends React.Component {
           <FormTextInput
             value={this.state.email}
             onChangeText={this.handleEmailChange}
+            placeholder={strings.FIRST_NAME_PLACEHOLDER}
+          />
+          <FormTextInput
+            value={this.state.email}
+            onChangeText={this.handleEmailChange}
+            placeholder={strings.LAST_NAME_PLACEHOLDER}
+          />
+          <FormTextInput
+            value={this.state.email}
+            onChangeText={this.handleEmailChange}
             placeholder={strings.EMAIL_PLACEHOLDER}
           />
           <FormTextInput
@@ -47,7 +56,12 @@ class LoginScreen extends React.Component {
             onChangeText={this.handlePasswordChange}
             placeholder={strings.PASSWORD_PLACEHOLDER}
           />
-          <Button label={strings.LOGIN} onPress={this.handleLoginPress} />
+          <FormTextInput
+            value={this.state.password}
+            onChangeText={this.handlePasswordChange}
+            placeholder={strings.CONFIRM_PASSWORD_PLACEHOLDER}
+          />
+          <Button label={strings.SIGNUP} onPress={this.handleLoginPress} />
         </View>
       </View>
     );
@@ -84,4 +98,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default LoginScreen;
+export default connect(mapStateToProps)(SignUpScreen);

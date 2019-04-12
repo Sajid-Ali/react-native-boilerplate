@@ -12,7 +12,7 @@
     "react-native": "0.58.2",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-redux-listener": "^0.3.0",
-    "react-navigation": "^3.0.9",
+    "react-navigation": "^2.18.2",
     "react-redux": "^7.0.1",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
