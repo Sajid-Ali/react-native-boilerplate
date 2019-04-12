@@ -5,12 +5,12 @@ import createSagaMiddleware from 'redux-saga'
 
 import { combineReducers } from 'redux';
 
-import rootReducer from '../reducers';
+import rootReducer from './reducers';
 // import sagas from './sagas'
 
 const getRootReducer = () => {
   return combineReducers({
-    user: { name: "SAJID ALI", email: "test_1@example.com"},
+    user: { name: "SAJID ALI", email: "test_1@example.com" },
     profile: { img_urs: 'tes/asa/asa', status: "login" }
   })
 };

@@ -1,7 +1,7 @@
 import * as types from '../actions/constants';
-import {fromJS} from 'immutable';
+import { fromJS } from 'immutable';
 
-const initialState = fromJS({
+export const initialState = fromJS({
   user: {
     data: null,
     loading: false,
@@ -9,7 +9,7 @@ const initialState = fromJS({
   },
 });
 
-export default function loginReducer(state = initialState, action) {
+export default function loginReducer (state = initialState, action) {
   switch (action.type) {
     case types.USER_LOGIN_REQUEST:
       return state.setIn(['user', 'data'], null).setIn(['user', 'loading'], true);
