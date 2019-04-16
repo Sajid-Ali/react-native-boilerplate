@@ -7,7 +7,8 @@ import strings from "../../config/strings";
 // import imageLogo from "../assets/images/logo.png";
 import colors from "../../config/colors";
 import { loginAction } from '../../actions/loginActions'
-import * as selector from '../../selectors/loginSelectors';
+import * as selectors from '../../selectors/loginSelectors';
+import { toJS } from "../../components/common/toJS";
 
 class LoginScreen extends React.Component {
   state = {
@@ -76,13 +77,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  user: state.user,
+  user: selectors.makeSelectLoginUser()(state),
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    // loginAction: data => dispatch(loginAction(data))
+    loginAction: data => dispatch(loginAction(data))
   }
 };
 
-export default LoginScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(toJS(LoginScreen));

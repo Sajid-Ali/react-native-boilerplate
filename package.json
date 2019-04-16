@@ -7,25 +7,25 @@
     "test": "jest"
   },
   "dependencies": {
-    "immutable": "^4.0.0-rc.12",
+    "immutable": "3.8.2",
     "react": "16.6.3",
-    "react-native": "^0.58.2",
-    "react-native-gesture-handler": "^1.1.0",
-    "react-native-redux-listener": "^0.3.0",
-    "react-navigation": "^2.18.2",
-    "react-redux": "^7.0.1",
-    "redux": "^4.0.1",
-    "redux-saga": "^1.0.2",
+    "react-native": "0.58.2",
+    "react-native-gesture-handler": "1.1.0",
+    "react-native-redux-listener": "0.3.0",
+    "react-navigation": "2.18.2",
+    "react-redux": "5.0.7",
+    "redux": "4.0.1",
+    "redux-immutable": "4.0.0",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "4.0.0"
   },
   "devDependencies": {
-    "babel-core": "^7.0.0-bridge.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.7.1",
     "jest": "24.7.1",
     "metro-react-native-babel-preset": "0.53.1",
     "react-test-renderer": "16.6.3",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "2.13.8"
   },
   "jest": {
     "preset": "react-native"

@@ -23,8 +23,8 @@ const enhancer = compose(
 
 
 export default function configureStore() {
-    return createStore(
-      rootReducer(),
-      composeWithDevTools(enhancer),
-    );
+  return createStore(
+    rootReducer(),
+    composeWithDevTools(enhancer),
+  );
 }
