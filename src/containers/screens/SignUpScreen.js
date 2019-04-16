@@ -8,6 +8,7 @@ import strings from "../../config/strings";
 import colors from "../../config/colors";
 import { loginAction } from '../../actions/loginActions'
 import * as selector from '../../selectors/loginSelectors';
+import { toJS } from "../../components/common/toJS";
 
 class SignUpScreen extends React.Component {
   state = {
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    list: state.user.data
+    // set of selectors for sign up component if any
   }
 };
 
@@ -107,4 +108,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect()(SignUpScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(toJS(SignUpScreen))

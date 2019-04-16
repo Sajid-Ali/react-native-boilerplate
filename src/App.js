@@ -1,16 +1,20 @@
+import {Provider} from "react-redux";
+import React, {Component} from 'react';
+import { SafeAreaView} from 'react-native';
 
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import configureStore from './store';
 import Router from "./routes";
 
-import store from './store';
-import { Provider } from "react-redux";
+const store = configureStore();
+console.log(store, 'store');
 
 export default class App extends Component {
-  render () {
+  render() {
     return (
       <Provider store={store}>
-        <Router />
+        <SafeAreaView style={{flex: 1}}>
+          <Router/>
+        </SafeAreaView>
       </Provider>
     );
   }
