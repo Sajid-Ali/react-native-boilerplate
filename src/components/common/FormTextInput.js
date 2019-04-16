@@ -1,9 +1,11 @@
+/* eslint-disable */
+// eslint-disable
 import React from "react";
 import { StyleSheet, TextInput } from "react-native";
 import colors from "../../config/colors";
 
 class FormTextInput extends React.Component {
-  render() {
+  render () {
     const { style, ...otherProps } = this.props;
     return (
       <TextInput

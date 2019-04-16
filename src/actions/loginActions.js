@@ -1,9 +1,8 @@
-import {USER_LOGIN_ACTION} from "./constants";
+import { USER_LOGIN_REQUEST } from "./constants";
 
-export function loginAction(data) {
+export default function loginAction (data) {
   return {
-    type: USER_LOGIN_ACTION,
-    payload: data
-  }
-
+    type: USER_LOGIN_REQUEST,
+    payload: data,
+  };
 }

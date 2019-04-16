@@ -3,11 +3,15 @@
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
-      "classes": true
+      "classes": true,
+      "jsx": true
     }
   },
   "rules": {
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      "error", {
+        "extensions": [".js", ".jsx"]
+      }],
     "global-require": "off",
     "no-console": "off",
     "import/no-extraneous-dependencies": "off",
@@ -20,6 +24,9 @@
     "react/no-multi-comp": "off",
     "react/no-unescaped-entities": "off",
     "jsx-a11y/click-events-have-key-events": "off",
-    "jsx-a11y/no-static-element-interactions": "off"
+    "jsx-a11y/no-static-element-interactions": "off",
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "no-cond-assign": ["error", "always"]
   }
 }
