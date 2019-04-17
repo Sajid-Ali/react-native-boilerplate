@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
@@ -7,14 +8,14 @@ import FormTextInput from "../../components/common/FormTextInput";
 import strings from "../../config/strings";
 // import imageLogo from "../assets/images/logo.png";
 import colors from "../../config/colors";
-import { loginAction } from "../../actions/loginActions";
+import { loginRequest } from "../../actions/loginActions";
 import * as selectors from "../../selectors/loginSelectors";
 import { toJS } from "../../components/common/toJS";
 
 class LoginScreen extends React.Component {
   state = {
-    email: "",
-    password: "",
+    email: "peter@klaven",
+    password: "cityslicka",
   };
 
   handleEmailChange = (email) => {
@@ -27,13 +28,23 @@ class LoginScreen extends React.Component {
 
   handleLoginPress = () => {
     const { email, password } = this.state;
-    this.props.navigation.navigate("SignUpScreen");
     if (email && password) {
-      // this.props.loginAction({ email, password });
+      this.props.loginAction({
+        email,
+        password
+      });
     }
   };
 
-  render() {
+  componentWillReceiveProps (nextProps) {
+    const { data } = nextProps.user;
+    const { navigation } = this.props;
+    if (data && data.token) {
+      navigation.navigate("SignUpScreen");
+    }
+  }
+
+  render () {
     console.log(this.props);
     return (
       <View style={styles.container}>
@@ -82,7 +93,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loginAction: data => dispatch(loginAction(data)),
+  loginAction: data => dispatch(loginRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(LoginScreen));
