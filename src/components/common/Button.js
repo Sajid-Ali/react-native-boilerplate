@@ -1,14 +1,10 @@
+/* eslint-disable */
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import colors from "../../config/colors";
 
-interface Props {
-  label: string;
-  onPress: () => void;
-}
-
 class Button extends React.Component {
-  render() {
+  render () {
     const { label, onPress } = this.props;
     return (
       <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -28,13 +24,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 4,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "rgba(255,255,255,0.7)"
+    borderColor: "rgba(255,255,255,0.7)",
   },
   text: {
     color: colors.WHITE,
     textAlign: "center",
-    height: 20
-  }
+    height: 20,
+  },
 });
 
 export default Button;
