@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Alert, AsyncStorage } from "react-native";
 import { connect } from "react-redux";
 
 import Button from "../../components/common/Button";
@@ -11,6 +11,8 @@ import colors from "../../config/colors";
 import { loginRequest } from "../../actions/loginActions";
 import * as selectors from "../../selectors/loginSelectors";
 import { toJS } from "../../components/common/toJS";
+
+import Biometrics from 'react-native-biometrics'
 
 class LoginScreen extends React.Component {
   state = {
@@ -34,6 +36,33 @@ class LoginScreen extends React.Component {
         password
       });
     }
+  };
+
+  handleTouchLogin = () => {
+    Biometrics.isSensorAvailable()
+      .then((biometryType) => {
+        if (biometryType === Biometrics.TouchID) {
+          Biometrics.createKeys('Confirm fingerprint')
+            .then((publicKey) => {
+              console.log(publicKey);
+              return Alert.alert('Touch Details',
+                `Public Key: ${publicKey}`,
+                [
+                  {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                  },
+                  { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ],
+                { cancelable: true },
+              );
+
+            })
+        } else {
+          console.log('Biometrics not supported')
+        }
+      })
   };
 
   componentWillReceiveProps (nextProps) {
@@ -62,6 +91,7 @@ class LoginScreen extends React.Component {
             secureTextEntry
           />
           <Button label={strings.LOGIN} onPress={this.handleLoginPress} />
+          <Button label={strings.TOUCH_LOGIN} onPress={this.handleTouchLogin} />
         </View>
       </View>
     );

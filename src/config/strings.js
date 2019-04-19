@@ -1,6 +1,7 @@
 const strings = {
   LOGIN: "Log In",
   SIGNUP: "Sign Up",
+  TOUCH_LOGIN: "Touch To Login",
   FIRST_NAME_PLACEHOLDER: "First Name",
   LAST_NAME_PLACEHOLDER: "Last Name",
   CONFIRM_PASSWORD_PLACEHOLDER: "Confirm Password",
